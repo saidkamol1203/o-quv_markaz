@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - O'quv Markaz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #333;
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .admin-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .admin-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .stat-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .label {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .messages-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: #f8fafc;
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-header h2 {
+            color: #1e293b;
+            font-size: 1.5rem;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .messages-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .message-item {
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            transition: background 0.3s ease;
+        }
+
+        .message-item:hover {
+            background: #f8fafc;
+        }
+
+        .message-item:last-child {
+            border-bottom: none;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .message-info h3 {
+            color: #1e293b;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .message-meta {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .message-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-new {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-read {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .message-content {
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .message-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
+
+        .no-messages {
+            text-align: center;
+            padding: 60px 20px;
+            color: #64748b;
+        }
+
+        .no-messages i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #cbd5e1;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .message-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .message-actions {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-header">
+        <h1><i class="fas fa-cog"></i> Admin Panel</h1>
+        <p>O'quv Markaz - Xabar Boshqaruvi</p>
+    </div>
+
+    <div class="container">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Asosiy saytga qaytish
+        </a>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="icon" style="color: #667eea;">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="number" id="total-messages">0</div>
+                <div class="label">Jami Xabarlar</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="icon" style="color: #28a745;">
+                    <i class="fas fa-envelope-open"></i>
+                </div>
+                <div class="number" id="new-messages">0</div>
+                <div class="label">Yangi Xabarlar</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="icon" style="color: #dc3545;">
+                    <i class="fas fa-trash"></i>
+                </div>
+                <div class="number" id="deleted-messages">0</div>
+                <div class="label">O'chirilgan</div>
+            </div>
+        </div>
+
+        <div class="messages-section">
+            <div class="section-header">
+                <h2><i class="fas fa-list"></i> Xabarlar Ro'yxati</h2>
+                <div>
+                    <button onclick="refreshMessages()" class="btn btn-primary">
+                        <i class="fas fa-sync-alt"></i> Yangilash
+                    </button>
+                    <button onclick="clearAllMessages()" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Barchasini o'chirish
+                    </button>
+                </div>
+            </div>
+            
+            <div class="messages-list" id="messages-list">
+                <!-- Xabarlar bu yerda ko'rinadi -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Xabarlarni yuklash
+        function loadMessages() {
+            const messages = JSON.parse(localStorage.getItem('oquvmarkaz_messages') || '[]');
+            const messagesList = document.getElementById('messages-list');
+            
+            // Statistikalarni yangilash
+            document.getElementById('total-messages').textContent = messages.length;
+            document.getElementById('new-messages').textContent = messages.filter(msg => msg.status === 'yangi').length;
+            
+            if (messages.length === 0) {
+                messagesList.innerHTML = `
+                    <div class="no-messages">
+                        <i class="fas fa-inbox"></i>
+                        <h3>Hozircha xabarlar yo'q</h3>
+                        <p>Foydalanuvchilar xabar yuborganlarida bu yerda ko'rinadi</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Xabarlarni ko'rsatish
+            messagesList.innerHTML = messages.map((message, index) => `
+                <div class="message-item">
+                    <div class="message-header">
+                        <div class="message-info">
+                            <h3>${message.name}</h3>
+                            <div class="message-meta">
+                                <i class="fas fa-envelope"></i> ${message.email} | 
+                                <i class="fas fa-phone"></i> ${message.phone} | 
+                                <i class="fas fa-clock"></i> ${message.time}
+                            </div>
+                        </div>
+                        <span class="message-status status-${message.status}">
+                            ${message.status === 'yangi' ? 'Yangi' : 'O\'qilgan'}
+                        </span>
+                    </div>
+                    
+                    <div class="message-content">
+                        <strong>Mavzu:</strong> ${message.subject}<br>
+                        <strong>Xabar:</strong> ${message.message}
+                    </div>
+                    
+                    <div class="message-actions">
+                        <button onclick="markAsRead(${message.id})" class="btn btn-success btn-sm">
+                            <i class="fas fa-check"></i> O'qilgan deb belgilash
+                        </button>
+                        <button onclick="deleteMessage(${message.id})" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i> O'chirish
+                        </button>
+                        <button onclick="replyToMessage('${message.email}', '${message.subject}')" class="btn btn-primary btn-sm">
+                            <i class="fas fa-reply"></i> Javob berish
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Xabarni o'qilgan deb belgilash
+        function markAsRead(messageId) {
+            const messages = JSON.parse(localStorage.getItem('oquvmarkaz_messages') || '[]');
+            const messageIndex = messages.findIndex(msg => msg.id === messageId);
+            
+            if (messageIndex !== -1) {
+                messages[messageIndex].status = 'read';
+                localStorage.setItem('oquvmarkaz_messages', JSON.stringify(messages));
+                loadMessages();
+                alert('✅ Xabar o\'qilgan deb belgilandi');
+            }
+        }
+
+        // Xabarni o'chirish
+        function deleteMessage(messageId) {
+            if (confirm('🗑️ Bu xabarni o\'chirishni xohlaysizmi?')) {
+                const messages = JSON.parse(localStorage.getItem('oquvmarkaz_messages') || '[]');
+                const filteredMessages = messages.filter(msg => msg.id !== messageId);
+                localStorage.setItem('oquvmarkaz_messages', JSON.stringify(filteredMessages));
+                loadMessages();
+                alert('✅ Xabar o\'chirildi');
+            }
+        }
+
+        // Barcha xabarlarni o'chirish
+        function clearAllMessages() {
+            if (confirm('🗑️ Barcha xabarlarni o\'chirishni xohlaysizmi? Bu amal qaytarib bo\'lmaydi!')) {
+                localStorage.removeItem('oquvmarkaz_messages');
+                loadMessages();
+                alert('✅ Barcha xabarlar o\'chirildi');
+            }
+        }
+
+        // Xabarlarni yangilash
+        function refreshMessages() {
+            loadMessages();
+            alert('✅ Xabarlar yangilandi');
+        }
+
+        // Javob berish
+        function replyToMessage(email, subject) {
+            const replySubject = `Re: ${subject}`;
+            window.open(`mailto:${email}?subject=${encodeURIComponent(replySubject)}`);
+        }
+
+        // Sahifa yuklanganda xabarlarni ko'rsatish
+        window.addEventListener('load', function() {
+            loadMessages();
+            
+            // Har 30 soniyada avtomatik yangilash
+            setInterval(loadMessages, 30000);
+        });
+
+        // Sahifa ko'rinayotganda yangilash
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                loadMessages();
+            }
+        });
+    </script>
+</body>
+</html>

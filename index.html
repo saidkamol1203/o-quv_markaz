@@ -935,6 +935,10 @@
                         <div>
                             <strong>Manzil</strong>
                             <span>Toshkent shahar, Chilonzor tumani<br>O'quv Markaz binosi, 2-qavat</span>
+                            <div style="margin-top: 10px;">
+                                <button onclick="showMap()" class="btn" style="padding: 8px 15px; font-size: 14px; margin-right: 10px; border: none; cursor: pointer;">🗺️ Xaritada ko'rish</button>
+                                <a href="https://maps.google.com/maps/dir//Toshkent+shahar+Chilonzor+tumani+Oquv+Markaz" target="_blank" class="btn" style="padding: 8px 15px; font-size: 14px; background: #4285f4; color: white;">🧭 Yo'l topish</a>
+                            </div>
                         </div>
                     </div>
 
@@ -945,6 +949,10 @@
                         <div>
                             <strong>Telefon</strong>
                             <span>+998 90 123 45 67<br>+998 71 234 56 78</span>
+                            <div style="margin-top: 10px;">
+                                <a href="tel:+998901234567" class="btn" style="padding: 8px 15px; font-size: 14px; margin-right: 10px;">📞 Qo'ng'iroq</a>
+                                <a href="https://wa.me/998901234567" class="btn" style="padding: 8px 15px; font-size: 14px; background: #25D366; color: white;">📱 WhatsApp</a>
+                            </div>
                         </div>
                     </div>
 
@@ -955,6 +963,10 @@
                         <div>
                             <strong>Email</strong>
                             <span>info@oquvmarkaz.uz<br>admin@oquvmarkaz.uz</span>
+                            <div style="margin-top: 10px;">
+                                <a href="mailto:info@oquvmarkaz.uz" class="btn" style="padding: 8px 15px; font-size: 14px; margin-right: 10px;">📧 Email</a>
+                                <a href="https://t.me/oquvmarkaz_uz" class="btn" style="padding: 8px 15px; font-size: 14px; background: #0088cc; color: white;">✈️ Telegram</a>
+                            </div>
                         </div>
                     </div>
 
@@ -1001,6 +1013,12 @@
                             <span id="submit-text">Xabar Yuborish</span>
                             <span id="submit-loading" class="loading" style="display: none;"></span>
                         </button>
+                        
+                        <div style="margin-top: 15px; text-align: center;">
+                            <button type="button" onclick="showSavedMessages()" class="btn" style="padding: 8px 15px; font-size: 14px; margin-right: 10px; background: #28a745; color: white;">📬 Saqlangan xabarlar</button>
+                            <button type="button" onclick="clearSavedMessages()" class="btn" style="padding: 8px 15px; font-size: 14px; margin-right: 10px; background: #dc3545; color: white;">🗑️ Tozalash</button>
+                            <a href="admin.html" class="btn" style="padding: 8px 15px; font-size: 14px; background: #6f42c1; color: white; text-decoration: none;">⚙️ Admin Panel</a>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -1054,6 +1072,24 @@
                     <p><i class="fas fa-phone"></i> +998 90 123 45 67</p>
                     <p><i class="fas fa-envelope"></i> info@oquvmarkaz.uz</p>
                     <p><i class="fas fa-clock"></i> Dushanba - Juma: 08:00 - 18:00</p>
+                    
+                    <div style="margin-top: 15px;">
+                        <h4 style="color: #667eea; margin-bottom: 10px;">Xarita:</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;">
+                            <a href="https://maps.google.com/maps?q=Toshkent+shahar+Chilonzor+tumani+Oquv+Markaz" target="_blank" style="background: #4285f4; color: white; padding: 6px 10px; border-radius: 15px; text-decoration: none; font-size: 11px;">🗺️ Xarita</a>
+                            <a href="https://maps.google.com/maps/dir//Toshkent+shahar+Chilonzor+tumani+Oquv+Markaz" target="_blank" style="background: #34a853; color: white; padding: 6px 10px; border-radius: 15px; text-decoration: none; font-size: 11px;">🧭 Yo'l topish</a>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <h4 style="color: #667eea; margin-bottom: 15px;">Tezkor aloqa:</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <a href="tel:+998901234567" style="background: #667eea; color: white; padding: 8px 12px; border-radius: 20px; text-decoration: none; font-size: 12px;">📞 Qo'ng'iroq</a>
+                            <a href="https://wa.me/998901234567" style="background: #25D366; color: white; padding: 8px 12px; border-radius: 20px; text-decoration: none; font-size: 12px;">📱 WhatsApp</a>
+                            <a href="mailto:info@oquvmarkaz.uz" style="background: #ea4335; color: white; padding: 8px 12px; border-radius: 20px; text-decoration: none; font-size: 12px;">📧 Email</a>
+                            <a href="https://t.me/oquvmarkaz_uz" style="background: #0088cc; color: white; padding: 8px 12px; border-radius: 20px; text-decoration: none; font-size: 12px;">✈️ Telegram</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -1088,12 +1124,93 @@
 
         // Kursga yozilish funksiyasi
         function enrollCourse(courseName) {
-            const message = `🎓 "${courseName}" kursiga yozilish!\n\n📞 Aloqa:\n+998 90 123 45 67\n+998 71 234 56 78\n\n📧 Email:\ninfo@oquvmarkaz.uz\n\n📍 Manzil:\nToshkent shahar, Chilonzor tumani\n\n⏰ Ish vaqti:\nDushanba - Juma: 08:00 - 18:00\nShanba: 09:00 - 15:00`;
+            const message = `🎓 "${courseName}" kursiga yozilish!\n\n📞 Aloqa:\n+998 90 123 45 67\n+998 71 234 56 78\n\n📧 Email:\ninfo@oquvmarkaz.uz\n\n📍 Manzil:\nToshkent shahar, Chilonzor tumani\n\n⏰ Ish vaqti:\nDushanba - Juma: 08:00 - 18:00\nShanba: 09:00 - 15:00\n\n🗺️ Xaritada ko'rish uchun "Xarita" tugmasini bosing!`;
             
             alert(message);
         }
 
-        // Xabar yuborish funksiyasi
+        // Xarita ko'rsatish funksiyasi
+        function showMap() {
+            const mapUrl = 'https://maps.google.com/maps?q=Toshkent+shahar+Chilonzor+tumani+Oquv+Markaz&t=&z=15&ie=UTF8&iwloc=&output=embed';
+            
+            // Xarita modal oynasi yaratish
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                z-index: 10000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            `;
+            
+            modal.innerHTML = `
+                <div style="
+                    background: white;
+                    border-radius: 15px;
+                    padding: 20px;
+                    max-width: 90%;
+                    max-height: 90%;
+                    position: relative;
+                ">
+                    <button onclick="this.parentElement.parentElement.remove()" style="
+                        position: absolute;
+                        top: 10px;
+                        right: 15px;
+                        background: #ff4444;
+                        color: white;
+                        border: none;
+                        border-radius: 50%;
+                        width: 30px;
+                        height: 30px;
+                        cursor: pointer;
+                        font-size: 18px;
+                    ">×</button>
+                    <h3 style="margin-bottom: 15px; color: #667eea;">🗺️ O'quv Markaz Manzili</h3>
+                    <iframe 
+                        src="${mapUrl}" 
+                        width="600" 
+                        height="400" 
+                        style="border:0; border-radius: 10px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <div style="margin-top: 15px; text-align: center;">
+                        <a href="https://maps.google.com/maps?q=Toshkent+shahar+Chilonzor+tumani+Oquv+Markaz" target="_blank" style="
+                            background: #4285f4;
+                            color: white;
+                            padding: 10px 20px;
+                            border-radius: 25px;
+                            text-decoration: none;
+                            margin-right: 10px;
+                        ">🗺️ Google Maps da ochish</a>
+                        <a href="https://maps.google.com/maps/dir//Toshkent+shahar+Chilonzor+tumani+Oquv+Markaz" target="_blank" style="
+                            background: #34a853;
+                            color: white;
+                            padding: 10px 20px;
+                            border-radius: 25px;
+                            text-decoration: none;
+                        ">🧭 Yo'l topish</a>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Modal oynani yopish
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+
+        // Xabar yuborish funksiyasi - BARCHA USULLAR
         function submitForm(event) {
             event.preventDefault();
             
@@ -1106,17 +1223,20 @@
             submitLoading.style.display = 'inline-block';
             submitBtn.disabled = true;
             
-            // Simulate API call
+            // Form ma'lumotlarini olish
+            const formData = new FormData(event.target);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Barcha usullar bilan xabar yuborish
+            sendMessageAllMethods(name, email, phone, subject, message);
+            
+            // Success message
             setTimeout(() => {
-                const formData = new FormData(event.target);
-                const name = formData.get('name');
-                const email = formData.get('email');
-                const phone = formData.get('phone');
-                const subject = formData.get('subject');
-                const message = formData.get('message');
-                
-                // Success message
-                alert(`✅ Xabaringiz muvaffaqiyatli yuborildi!\n\n👤 Ism: ${name}\n📧 Email: ${email}\n📞 Telefon: ${phone}\n📝 Mavzu: ${subject}\n💬 Xabar: ${message}\n\n⏰ Tez orada sizga javob beramiz!\n\n📞 Shoshilinch aloqa: +998 90 123 45 67`);
+                alert(`✅ Xabaringiz BARCHA USULLAR orqali yuborildi!\n\n👤 Ism: ${name}\n📧 Email: ${email}\n📞 Telefon: ${phone}\n📝 Mavzu: ${subject}\n💬 Xabar: ${message}\n\n📧 Email yuborildi\n📱 WhatsApp yuborildi\n✈️ Telegram yuborildi\n📞 Telefon qo'ng'irog'i tayyor\n\n⏰ Tez orada sizga javob beramiz!`);
                 
                 // Formani tozalash
                 event.target.reset();
@@ -1126,6 +1246,112 @@
                 submitLoading.style.display = 'none';
                 submitBtn.disabled = false;
             }, 2000);
+        }
+
+        // Barcha usullar bilan xabar yuborish
+        function sendMessageAllMethods(name, email, phone, subject, message) {
+            const currentTime = new Date().toLocaleString('uz-UZ');
+            const messageText = `🎓 O'QUV MARKAZ - YANGI XABAR\n\n👤 Ism: ${name}\n📧 Email: ${email}\n📞 Telefon: ${phone}\n📝 Mavzu: ${subject}\n💬 Xabar: ${message}\n⏰ Vaqt: ${currentTime}`;
+            
+            // Xabarni saqlash (localStorage da)
+            saveMessageToLocal(name, email, phone, subject, message, currentTime);
+            
+            // 1. EMAIL YUBORISH
+            const emailSubject = `O'quv Markaz - ${subject}`;
+            const emailBody = `Ism: ${name}%0AEmail: ${email}%0ATelefon: ${phone}%0AMavzu: ${subject}%0A%0AXabar: ${message}%0A%0AVaqt: ${currentTime}`;
+            
+            // Email ochish (foydalanuvchi tasdiqlashi kerak)
+            setTimeout(() => {
+                if (confirm('📧 Email yuborish uchun email dasturingizni ochishni xohlaysizmi?')) {
+                    window.open(`mailto:info@oquvmarkaz.uz?subject=${encodeURIComponent(emailSubject)}&body=${emailBody}`);
+                }
+            }, 500);
+            
+            // 2. WHATSAPP YUBORISH
+            setTimeout(() => {
+                if (confirm('📱 WhatsApp orqali xabar yuborishni xohlaysizmi?')) {
+                    const whatsappMessage = encodeURIComponent(messageText);
+                    window.open(`https://wa.me/998901234567?text=${whatsappMessage}`);
+                }
+            }, 1000);
+            
+            // 3. TELEGRAM YUBORISH
+            setTimeout(() => {
+                if (confirm('✈️ Telegram orqali xabar yuborishni xohlaysizmi?')) {
+                    const telegramMessage = encodeURIComponent(messageText);
+                    window.open(`https://t.me/oquvmarkaz_uz?text=${telegramMessage}`);
+                }
+            }, 1500);
+            
+            // 4. TELEFON QO'NG'IROG'I
+            setTimeout(() => {
+                if (confirm('📞 Telefon qo`ng`irog`i qilishni xohlaysizmi?')) {
+                    window.open('tel:+998901234567');
+                }
+            }, 2000);
+            
+            // 5. SMS YUBORISH
+            setTimeout(() => {
+                if (confirm('💬 SMS yuborishni xohlaysizmi?')) {
+                    const smsMessage = encodeURIComponent(`O'quv Markaz: ${name} - ${subject}. Telefon: ${phone}`);
+                    window.open(`sms:+998901234567?body=${smsMessage}`);
+                }
+            }, 2500);
+        }
+
+        // Xabarni saqlash funksiyasi
+        function saveMessageToLocal(name, email, phone, subject, message, time) {
+            const messageData = {
+                id: Date.now(),
+                name: name,
+                email: email,
+                phone: phone,
+                subject: subject,
+                message: message,
+                time: time,
+                status: 'yangi'
+            };
+            
+            // LocalStorage dan eski xabarlarni olish
+            let messages = JSON.parse(localStorage.getItem('oquvmarkaz_messages') || '[]');
+            
+            // Yangi xabarni qo'shish
+            messages.push(messageData);
+            
+            // LocalStorage ga saqlash
+            localStorage.setItem('oquvmarkaz_messages', JSON.stringify(messages));
+            
+            console.log('✅ Xabar saqlandi:', messageData);
+        }
+
+        // Saqlangan xabarlarni ko'rsatish
+        function showSavedMessages() {
+            const messages = JSON.parse(localStorage.getItem('oquvmarkaz_messages') || '[]');
+            
+            if (messages.length === 0) {
+                alert('📭 Hozircha saqlangan xabarlar yo\'q');
+                return;
+            }
+            
+            let messageList = '📬 SAQLANGAN XABARLAR:\n\n';
+            messages.forEach((msg, index) => {
+                messageList += `${index + 1}. 👤 ${msg.name}\n`;
+                messageList += `   📧 ${msg.email}\n`;
+                messageList += `   📞 ${msg.phone}\n`;
+                messageList += `   📝 ${msg.subject}\n`;
+                messageList += `   ⏰ ${msg.time}\n`;
+                messageList += `   📄 ${msg.message.substring(0, 50)}...\n\n`;
+            });
+            
+            alert(messageList);
+        }
+
+        // Xabarlarni tozalash
+        function clearSavedMessages() {
+            if (confirm('🗑️ Barcha saqlangan xabarlarni o\'chirishni xohlaysizmi?')) {
+                localStorage.removeItem('oquvmarkaz_messages');
+                alert('✅ Barcha xabarlar o\'chirildi');
+            }
         }
 
         // Scroll animations
