@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O'quv Markaz - Professional Ta'lim</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-card {
+            padding: 20px;
+        }
+
+        .stat-card .icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .label {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 60px;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        .course-card p {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .course-card .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #cbd5e1;
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 20px;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                O'quv Markaz
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home">Bosh sahifa</a></li>
+                <li><a href="#courses">Kurslar</a></li>
+                <li><a href="#teachers">O'qituvchilar</a></li>
+                <li><a href="#about">Biz haqimizda</a></li>
+                <li><a href="#contact">Aloqa</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Professional Ta'lim Markazi</h1>
+            <p>Kelajagingizni bugun boshlang! Bizning professional o'qituvchilar va zamonaviy dasturlar bilan eng yaxshi ta'lim oling.</p>
+            <a href="#courses" class="btn">Kurslarni ko'rish</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="number">500+</div>
+                    <div class="label">Talabalar</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="number">25+</div>
+                    <div class="label">Kurslar</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="number">15+</div>
+                    <div class="label">O'qituvchilar</div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="number">5+</div>
+                    <div class="label">Yil tajriba</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <h2 class="section-title">Bizning Kurslar</h2>
+            <p class="section-subtitle">Zamonaviy texnologiyalar va professional o'qituvchilar bilan eng yaxshi ta'lim oling</p>
+            
+            <div class="courses-grid">
+                <div class="course-card">
+                    <h3>Web Dasturlash</h3>
+                    <p>HTML, CSS, JavaScript va React texnologiyalari bilan zamonaviy veb-saytlar yarating.</p>
+                    <div class="price">2,500,000 so'm</div>
+                    <a href="#" class="btn">Batafsil</a>
+                </div>
+                
+                <div class="course-card">
+                    <h3>Python Dasturlash</h3>
+                    <p>Python dasturlash tilini o'rganing va ma'lumotlar tahlili, AI sohasida ishlang.</p>
+                    <div class="price">2,200,000 so'm</div>
+                    <a href="#" class="btn">Batafsil</a>
+                </div>
+                
+                <div class="course-card">
+                    <h3>Grafik Dizayn</h3>
+                    <p>Photoshop, Illustrator va Figma yordamida professional dizaynlar yarating.</p>
+                    <div class="price">1,800,000 so'm</div>
+                    <a href="#" class="btn">Batafsil</a>
+                </div>
+                
+                <div class="course-card">
+                    <h3>Digital Marketing</h3>
+                    <p>Google Ads, Facebook Marketing va SEO texnikalarini o'rganing.</p>
+                    <div class="price">2,000,000 so'm</div>
+                    <a href="#" class="btn">Batafsil</a>
+                </div>
+                
+                <div class="course-card">
+                    <h3>Ingliz Tili</h3>
+                    <p>IELTS va TOEFL tayyorlash, ish uchun ingliz tili va muloqot.</p>
+                    <div class="price">1,500,000 so'm</div>
+                    <a href="#" class="btn">Batafsil</a>
+                </div>
+                
+                <div class="course-card">
+                    <h3>Biznes Boshqaruvi</h3>
+                    <p>Startup yaratish, loyiha boshqaruvi va moliya asoslari.</p>
+                    <div class="price">2,300,000 so'm</div>
+                    <a href="#" class="btn">Batafsil</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>
+                        <i class="fas fa-graduation-cap"></i>
+                        O'quv Markaz
+                    </h3>
+                    <p>Professional ta'lim va malaka oshirish markazi. Bizning maqsadimiz - sizning kelajagingizni yaratish.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Tezkor havolalar</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#home">Bosh sahifa</a></li>
+                        <li><a href="#courses">Kurslar</a></li>
+                        <li><a href="#teachers">O'qituvchilar</a></li>
+                        <li><a href="#about">Biz haqimizda</a></li>
+                        <li><a href="#contact">Aloqa</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Aloqa ma'lumotlari</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Toshkent shahar, Chilonzor tumani</p>
+                    <p><i class="fas fa-phone"></i> +998 90 123 45 67</p>
+                    <p><i class="fas fa-envelope"></i> info@oquvmarkaz.uz</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Ish vaqti</h3>
+                    <p>Dushanba - Juma: 08:00 - 18:00</p>
+                    <p>Shanba: 09:00 - 15:00</p>
+                    <p>Yakshanba: Dam olish</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 O'quv Markaz. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Simple form handling
+        function showAlert(message) {
+            alert(message);
+        }
+
+        // Add click handlers for course buttons
+        document.querySelectorAll('.course-card .btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                showAlert('Kursga yozilish uchun +998 90 123 45 67 raqamiga qo\'ng\'iroq qiling!');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+🎓 O'QUV MARKAZ SAYTI - OCHISH USULLARI
+========================================
+
+📁 FAYL JOYLASHUVI:
+C:\Users\mirza\OneDrive\Desktop\loyiha\index.html
+
+🚀 3 TA USUL BILAN OCHISH:
+
+1️⃣ ENG OSON USUL:
+   - start.bat faylini ishga tushiring
+   - Avtomatik ravishda brauzerda ochiladi
+
+2️⃣ TO'G'RIDAN-TO'G'RI:
+   - index.html faylini toping
+   - Uning ustiga ikki marta bosing (double-click)
+   - Brauzerda avtomatik ochiladi
+
+3️⃣ BRAUZER ORQALI:
+   - Brauzer oching (Chrome, Firefox, Edge)
+   - Ctrl + O bosib fayl tanlang
+   - index.html faylini tanlang va oching
+
+📱 SAYT XUSUSIYATLARI:
+✅ Responsive dizayn (telefon, planshet, kompyuter)
+✅ 6 ta professional kurs
+✅ 4 ta tajribali o'qituvchi
+✅ Xabar yuborish formasi
+✅ Zamonaviy animatsiyalar
+✅ O'zbek tilida
+
+🎯 KURSLAR:
+• Web Dasturlash - 2,500,000 so'm (6 oy, O'rta)
+• Python Dasturlash - 2,200,000 so'm (5 oy, Boshlang'ich)
+• Grafik Dizayn - 1,800,000 so'm (4 oy, Boshlang'ich)
+• Digital Marketing - 2,000,000 so'm (3 oy, O'rta)
+• Ingliz Tili - 1,500,000 so'm (6 oy, Barcha)
+• Biznes Boshqaruvi - 2,300,000 so'm (4 oy, Yuqori)
+
+👨‍🏫 O'QITUVCHILAR:
+• Aziz Karimov - Web Dasturlash (8 yil, 4.9⭐)
+• Malika Toshmatova - Python Dasturlash (6 yil, 4.8⭐)
+• Javlon Rahimov - Grafik Dizayn (5 yil, 4.7⭐)
+• Dilnoza Usmanova - Digital Marketing (7 yil, 4.9⭐)
+
+📞 ALOQA:
+Telefon: +998 90 123 45 67
+Email: info@oquvmarkaz.uz
+Manzil: Toshkent shahar, Chilonzor tumani
+Ish vaqti: Dushanba - Juma: 08:00 - 18:00
+
+🆘 MUAMMO BO'LSA:
+- Agar sayt ochilmasa, index.html faylini brauzerda qo'lda oching
+- Boshqa brauzerda sinab ko'ring
+- Internet ulanishini tekshiring
+
+🎉 TAYYOR!
+Sizning professional o'quv markaz saytingiz 100% tayyor!
+Hech qanday qo'shimcha dastur yoki server kerak emas!
