@@ -7,6 +7,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --bg: #f8fafc;
+            --bg-alt: #f8fafc;
+            --surface: #ffffff;
+            --surface-alt: #eef2ff;
+            --text: #1e293b;
+            --text-strong: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --header-bg: #ffffff;
+            --header-text: #475569;
+            --shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+            --hero-start: #667eea;
+            --hero-end: #764ba2;
+            --footer-bg: #0f172a;
+        }
+
+        body[data-theme='dark'] {
+            --bg: #020617;
+            --bg-alt: #0f172a;
+            --surface: #111827;
+            --surface-alt: #1e293b;
+            --text: #e2e8f0;
+            --text-strong: #f8fafc;
+            --text-muted: #cbd5e1;
+            --border: #334155;
+            --header-bg: #020617;
+            --header-text: #f8fafc;
+            --shadow: 0 12px 30px rgba(2, 6, 23, 0.45);
+            --hero-start: #4f46e5;
+            --hero-end: #7c3aed;
+            --footer-bg: #020617;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -16,8 +50,13 @@
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #f8fafc;
+            color: var(--text);
+            background: var(--bg);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        section {
+            scroll-margin-top: 90px;
         }
 
         .container {
@@ -28,13 +67,14 @@
 
         /* Header */
         header {
-            background: white;
+            background: var(--header-bg);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
+            transition: background 0.3s ease;
         }
 
         nav {
@@ -54,14 +94,46 @@
             gap: 10px;
         }
 
+        .theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 12px;
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--surface);
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.15);
+        }
+
         .nav-menu {
             display: flex;
             list-style: none;
             gap: 30px;
         }
 
+        .nav-menu.mobile-open {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+            min-width: 220px;
+        }
+
         .nav-menu a {
-            color: #475569;
+            color: var(--header-text);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
@@ -85,7 +157,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--hero-start) 0%, var(--hero-end) 100%);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -153,10 +225,39 @@
             color: #667eea;
         }
 
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 1100;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: #e0e7ff;
+            color: #4338ca;
+            font-weight: 600;
+            margin-bottom: 14px;
+            font-size: 0.9rem;
+        }
+
         /* Stats Section */
         .stats {
             padding: 80px 0;
-            background: white;
+            background: var(--surface);
         }
 
         .stats-grid {
@@ -197,10 +298,212 @@
             font-weight: 500;
         }
 
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: var(--bg);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .benefit-card {
+            padding: 28px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-alt) 100%);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .benefit-card .icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.2rem;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .benefit-card p {
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background: var(--bg-alt);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            padding: 28px;
+            border-radius: 16px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .testimonial-card p {
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            font-style: italic;
+        }
+
+        .testimonial-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-user .avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .testimonial-user strong {
+            display: block;
+            color: #1e293b;
+        }
+
+        .testimonial-user span {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: var(--bg);
+        }
+
+        .faq-layout {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .faq-intro {
+            padding: 28px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.25);
+        }
+
+        .faq-intro h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+
+        .faq-intro p {
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.92);
+            line-height: 1.8;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            color: #1e293b;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+        }
+
+        .faq-answer {
+            display: none;
+            color: #64748b;
+            margin-top: 10px;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: #4338ca;
+        }
+
+        .floating-cta {
+            position: fixed;
+            right: 20px;
+            bottom: 86px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 24px;
+            z-index: 1000;
+            width: 46px;
+            height: 46px;
+            border: none;
+            border-radius: 50%;
+            background: #1e293b;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+            display: none;
+        }
+
         /* Courses Section */
         .courses {
             padding: 80px 0;
-            background: #f8fafc;
+            background: var(--bg-alt);
         }
 
         .section-title {
@@ -228,13 +531,14 @@
         }
 
         .course-card {
-            background: white;
+            background: var(--surface);
             border-radius: 16px;
             padding: 30px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            border: 1px solid var(--border);
         }
 
         .course-card::before {
@@ -299,7 +603,7 @@
         /* Teachers Section */
         .teachers {
             padding: 80px 0;
-            background: white;
+            background: var(--surface);
         }
 
         .teachers-grid {
@@ -309,13 +613,13 @@
         }
 
         .teacher-card {
-            background: white;
+            background: var(--surface);
             border-radius: 16px;
             padding: 30px;
             text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border);
         }
 
         .teacher-card:hover {
@@ -370,7 +674,7 @@
         /* Contact Section */
         .contact {
             padding: 80px 0;
-            background: #f8fafc;
+            background: var(--bg-alt);
         }
 
         .contact-content {
@@ -391,9 +695,10 @@
             align-items: flex-start;
             margin-bottom: 25px;
             padding: 20px;
-            background: white;
+            background: var(--surface);
             border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
         }
 
         .info-item .icon {
@@ -411,21 +716,22 @@
 
         .info-item strong {
             display: block;
-            color: #1e293b;
+            color: var(--text-strong);
             margin-bottom: 5px;
             font-weight: 600;
         }
 
         .info-item span {
-            color: #64748b;
+            color: var(--text-muted);
             line-height: 1.5;
         }
 
         .contact-form {
-            background: white;
+            background: var(--surface);
             padding: 40px;
             border-radius: 16px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
         }
 
         .contact-form h3 {
@@ -472,7 +778,7 @@
 
         /* Footer */
         footer {
-            background: #1e293b;
+            background: var(--footer-bg);
             color: white;
             padding: 60px 0 20px;
         }
@@ -571,7 +877,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .contact-content {
+            .contact-content,
+            .faq-layout {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
@@ -639,6 +946,8 @@
     </style>
 </head>
 <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <!-- Header -->
     <header>
         <nav class="container">
@@ -653,6 +962,10 @@
                 <li><a href="#about">Biz haqimizda</a></li>
                 <li><a href="#contact">Aloqa</a></li>
             </ul>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Kun/tun rejimi">
+                <i class="fas fa-moon"></i>
+                <span>Tun</span>
+            </button>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -704,6 +1017,83 @@
                     </div>
                     <div class="number">5+</div>
                     <div class="label">Yil Tajriba</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-intro fade-in-up">
+                <div class="section-tag"><i class="fas fa-bolt"></i> Nega aynan biz?</div>
+                <h2 class="section-title" style="margin-bottom: 12px;">Sizga eng mos ta'lim yo'lini tanlashda yordam beramiz</h2>
+                <p class="section-subtitle" style="margin-bottom: 0;">Amaliy mashg'ulotlar, individual yondashuv va real natijalar — bularning hammasi bir joyda.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in-up">
+                    <div class="icon"><i class="fas fa-user-check"></i></div>
+                    <h3>Individual dastur</h3>
+                    <p>Har bir talabaning darajasi va ehtiyojiga mos holda ta'lim jarayonini moslashtiramiz.</p>
+                </div>
+                <div class="benefit-card fade-in-up">
+                    <div class="icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Amaliy ko‘nikma</h3>
+                    <p>Na faqat nazariya, balki real loyihalar ustida ishlash orqali tezda professional bo‘lishingiz mumkin.</p>
+                </div>
+                <div class="benefit-card fade-in-up">
+                    <div class="icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Martaba qo‘llab-quvvatlash</h3>
+                    <p>Kurs tugagach, ish topish, portfolio yaratish va rivojlanish yo‘lida maslahat beramiz.</p>
+                </div>
+                <div class="benefit-card fade-in-up">
+                    <div class="icon"><i class="fas fa-clock"></i></div>
+                    <h3>Moslashuvchan jadval</h3>
+                    <p>Kechki va haftalik mashg‘ulotlar orqali ish bilan bir vaqtda o‘qish imkoniyati mavjud.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-intro fade-in-up">
+                <div class="section-tag"><i class="fas fa-comments"></i> Talabalar fikri</div>
+                <h2 class="section-title" style="margin-bottom: 12px;">Biz bilan ta'lim olganlar qanday natija oldi?</h2>
+            </div>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card fade-in-up">
+                    <p>“Men 3 oy ichida web dasturlashda mustaqil loyiha yaratishni o‘rgandim. Hozirda freelancing bilan shug‘ullanaman.”</p>
+                    <div class="testimonial-user">
+                        <div class="avatar">A</div>
+                        <div>
+                            <strong>Aziza Axmedova</strong>
+                            <span>Web Dasturlash kursi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in-up">
+                    <p>“Python kursi juda amaliy bo‘ldi. Endi men avtomatlashtirish loyihalari ustida ishlayman.”</p>
+                    <div class="testimonial-user">
+                        <div class="avatar">M</div>
+                        <div>
+                            <strong>Madina Qurbonova</strong>
+                            <span>Python kursi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in-up">
+                    <p>“Dizayn kursida portfolio yaratish bo‘yicha ko‘p yordam berdilar. Hozirda ishga kirish uchun tayyorman.”</p>
+                    <div class="testimonial-user">
+                        <div class="avatar">J</div>
+                        <div>
+                            <strong>Jasur Turg‘unov</strong>
+                            <span>Grafik Dizayn kursi</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -918,6 +1308,39 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-layout">
+                <div class="faq-intro fade-in-up">
+                    <div class="section-tag" style="background: rgba(255,255,255,0.2); color: white; margin-bottom: 16px;"><i class="fas fa-question-circle"></i> Tez-tez so‘raladigan savollar</div>
+                    <h3>Yozilish va ta'lim jarayoni haqida ko‘proq bilib oling</h3>
+                    <p>Hamma savollaringizni tezda javoblash uchun eng ko‘p so‘raladigan savollarni yig‘ib chiqdik.</p>
+                    <a href="#contact" class="btn btn-secondary">Bepul maslahat oling</a>
+                </div>
+
+                <div>
+                    <div class="faq-item active fade-in-up">
+                        <button class="faq-question" type="button">Kursga yozilish qancha vaqt oladi? <i class="fas fa-plus"></i></button>
+                        <div class="faq-answer">Yozilish uchun 5-10 minut vaqt yetarli. Biz sizga eng tezkor va qulay yo‘l bilan yordam beramiz.</div>
+                    </div>
+                    <div class="faq-item fade-in-up">
+                        <button class="faq-question" type="button">Kurslar online ham bo‘ladimi? <i class="fas fa-plus"></i></button>
+                        <div class="faq-answer">Ha, ko‘p kurslar online va ofline formatlarda olib boriladi. Sizga eng qulay usulni tanlash imkoniyati bor.</div>
+                    </div>
+                    <div class="faq-item fade-in-up">
+                        <button class="faq-question" type="button">Kurs tugagandan keyin yordam berasizmi? <i class="fas fa-plus"></i></button>
+                        <div class="faq-answer">Albatta. Biz portfolio, ish topish va kelajakdagi o‘quv yo‘lingiz bo‘yicha ham yordam beramiz.</div>
+                    </div>
+                    <div class="faq-item fade-in-up">
+                        <button class="faq-question" type="button">Boshlang‘ich darajadagi odam ham qila oladimi? <i class="fas fa-plus"></i></button>
+                        <div class="faq-answer">Ha, kurslar boshlang‘ichdan professional darajagacha bo‘lgan talabalar uchun mo‘ljallangan.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
@@ -1099,7 +1522,43 @@
         </div>
     </footer>
 
+    <a href="https://wa.me/998901234567" class="floating-cta" target="_blank">
+        <i class="fab fa-whatsapp"></i> Shoshilinch bog‘lanish
+    </a>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Yuqoriga qaytish">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('oquv-theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const defaultTheme = savedTheme || (new Date().getHours() >= 19 || new Date().getHours() < 6 ? 'dark' : 'light');
+
+        function applyTheme(theme) {
+            document.body.setAttribute('data-theme', theme);
+            if (themeToggle) {
+                const icon = themeToggle.querySelector('i');
+                const label = themeToggle.querySelector('span');
+                if (icon) {
+                    icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                }
+                if (label) {
+                    label.textContent = theme === 'dark' ? 'Kun' : 'Tun';
+                }
+            }
+            localStorage.setItem('oquv-theme', theme);
+        }
+
+        applyTheme(defaultTheme);
+
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                applyTheme(currentTheme);
+            });
+        }
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1117,10 +1576,25 @@
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-menu a');
 
-        mobileMenuBtn.addEventListener('click', function() {
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-        });
+        if (mobileMenuBtn && navMenu) {
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('mobile-open');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('mobile-open');
+                });
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navMenu.classList.remove('mobile-open');
+                }
+            });
+        }
 
         // Kursga yozilish funksiyasi
         function enrollCourse(courseName) {
@@ -1385,14 +1859,53 @@
         });
 
         // Navbar background on scroll
+        const scrollProgress = document.getElementById('scrollProgress');
+        const backToTop = document.getElementById('backToTop');
+
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+
+            if (scrollProgress) {
+                scrollProgress.style.width = `${Math.min(progress, 100)}%`;
+            }
+
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.background = isDark ? 'rgba(2, 6, 23, 0.95)' : 'rgba(255, 255, 255, 0.95)';
                 header.style.backdropFilter = 'blur(10px)';
+                if (backToTop) {
+                    backToTop.style.display = 'block';
+                }
             } else {
-                header.style.background = 'white';
+                header.style.background = isDark ? 'var(--header-bg)' : 'white';
                 header.style.backdropFilter = 'none';
+                if (backToTop) {
+                    backToTop.style.display = 'none';
+                }
+            }
+        });
+
+        if (backToTop) {
+            backToTop.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const button = item.querySelector('.faq-question');
+            if (button) {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.faq-item').forEach(other => {
+                        if (other !== item) {
+                            other.classList.remove('active');
+                        }
+                    });
+                    item.classList.toggle('active');
+                });
             }
         });
 
